@@ -53,7 +53,7 @@ function checkIt(string) {
 
 let 
 
-    gotIE =
+   gotIE =
         !!/*@cc_on!@*/0 ||
         (!+"\v1") ? true: false ||
         "ActiveXObject" in window ||
@@ -63,7 +63,7 @@ let
         document.all ||
         document.documentMode && !window.MSAssertion,
 
-   gotSafari = 
+  gotSafari = 
         /constructor/i.test(window.HTMLElement) ||
         (function (p) {return p.toString() === "[object SafariRemoteNotification]";})(!window['safari']) ||
         window.safari !== undefined ||
@@ -73,7 +73,7 @@ let
         Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') ||
         /constructor/i.test(function HTMLElementConstructor() {}),
 
-   gotOpera = 
+  gotOpera = 
         typeof window.opr !== "undefined" || 
         window.opera && window.opera.buildNumber ||
         window.opera && window.opera.version || 
