@@ -8,10 +8,10 @@ An experimental JavaScript snippet for easy browser / feature detection.
 
 * Google Chrome
 * Mozilla Firefox
-** Firefox Mobile
+* Firefox Mobile
 * Microsoft Edge (Old + New)
 * Opera
-** Opera Mini
+* Opera Mini
 * Safari
 * Internet Explorer
 * Blink
