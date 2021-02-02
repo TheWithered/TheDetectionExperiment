@@ -61,6 +61,7 @@ An experimental JavaScript snippet for easy browser / feature detection.
 ### Browser plugins
 
 * Microsoft Silverlight
+* Microsoft ActiveX
 
 ### Operating systems and devices
 
