@@ -18,16 +18,20 @@
  * -----------------------------------------------------------------------------------------------------
  * Installation:
  *  - Add this in your <head>:
+ *
  *          <script 
  *              type = "text/javascript" 
- *              src = "https://gitlab.com/TheWithered/detection-experiment/snippets/1955434/raw"
+ *              src = "https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js"
  *          </script>
+ *
  *  - Install through jQuery: 
- *     $.getScript('https://gitlab.com/TheWithered/detection-experiment/snippets/1955434/raw');
+ *
+ *     $.getScript('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js');
+ *
  *  - (MediaWiki only) Use:
- *      mw.loader.load('https://gitlab.com/TheWithered/detection-experiment/snippets/1955434/raw');
+ *      mw.loader.load('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js');
  *    or alternatively:
- *     mw.loader.getScript('https://gitlab.com/TheWithered/detection-experiment/snippets/1955434/raw');
+ *     mw.loader.getScript('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js');
  * ------------------------------------------------------------------------------------------------------
  * I advise AGAINST copy-pasting this code! You may end up with outdated versions of the script when
  * it is updated. This can't happen if you import it by URL.
@@ -38,8 +42,8 @@
 // Preparation
 // --------------
 
-var desys = window.navigator.platform; // DEvice + SYStem
-var detect = navigator.userAgent.toLowerCase(); // Necessary for certain exotic browsers (eg. Konqueror, iCab)
+const desys  = window.navigator.platform; // DEvice + SYStem
+const detect = navigator.userAgent.toLowerCase(); // Necessary for certain exotic browsers (eg. Konqueror, iCab)
 
 function checkIt(string) {
 	place = detect.indexOf(string) + 1;
@@ -51,7 +55,7 @@ function checkIt(string) {
 // Browsers
 // ----------
 
-let 
+const 
 
    gotIE =
         !!/*@cc_on!@*/0 ||
@@ -83,7 +87,7 @@ let
         typeof InstallTrigger !== 'undefined' ||
         (('netscape' in window) && / rv:/.test(navigator.userAgent)) ||
         CSS.supports("@document") ||
-        "mozInnerScreenX" in window;
+        "mozInnerScreenX" in window,
 
   // The old version of Edge
 
@@ -151,7 +155,7 @@ let
 // Mobile (general)
 // ------------------
         
-let gotMobile =
+const gotMobile =
         typeof window.orientation !== 'undefined' &&
         'ontouchstart' in document.documentElement &&
         window.matchMedia("(min-width: 400px)").matches &&
@@ -161,7 +165,7 @@ let gotMobile =
 // Flash Simple -- Simple, just detect existence of Flash
 // ---------------------------------------------------------
 
-let gotFlash = 
+const gotFlash = 
 
         ((typeof navigator.plugins == "undefined" || navigator.plugins.length == 0) ? 
         !!(new ActiveXObject("ShockwaveFlash.ShockwaveFlash")): navigator.plugins["Shockwave Flash"]);
@@ -256,7 +260,7 @@ function getFlashVersion() {
             }
         } catch (e) {}
     }
-    return '0,0,0';
+    return '0, 0, 0';
 }
 
 let flashVersion = getFlashVersion().split(',').shift();
@@ -265,7 +269,7 @@ let flashVersion = getFlashVersion().split(',').shift();
 // OS
 // -----
 
-let 
+const 
 
     // Windows (Advanced)
 
@@ -389,6 +393,6 @@ let
 // Misc
 // -------
 
-let gotWebTV = 
+const gotWebTV = 
     ~navigator.userAgent.toLowerCase().indexOf("webtv") ||
     desys == "WebTV OS";
