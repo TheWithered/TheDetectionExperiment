@@ -2,6 +2,8 @@
 
 An experimental JavaScript snippet for easy browser / feature detection.
 
+We deliberately use user agent checking as less as possible. Many browser extensions let you change your user agent at will, and it's not uncommon for a browser to have a user agent string from another browser (E. g. The UA string 'Netscape' is used by literally a dozen browsers that aren't Netscape, including Firefox and Chrome).
+
 # Currently checks for
 
 ### Browsers
