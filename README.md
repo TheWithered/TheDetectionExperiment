@@ -34,6 +34,7 @@ We deliberately use user agent checking as less as possible. Many browser extens
 * iOS
 * iPadOS
 * iPod
+* Amazon Kindle Fire
 * Solaris / SunOS
 * FreeBSD
 * OpenBSD
@@ -67,7 +68,6 @@ We deliberately use user agent checking as less as possible. Many browser extens
 
 ### Operating systems and devices
 
-* Amazon Kindle Fire
 * Other Unix-derived operating systems
 
 
