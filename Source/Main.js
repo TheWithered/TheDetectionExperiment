@@ -166,6 +166,7 @@ const gotMobile =
 // ------------------------
 
 const 
+
    gotBlackBerry =
       navigator.userAgent.match(new RegExp(/BlackBerry/i)),
       
@@ -181,6 +182,8 @@ const kindleStrings = new RegExp(
 );
 
 const gotKindle = kindleStrings.test(navigator.userAgent);
+
+// Further variables for other mobile devices are further down
    
 // ---------------------------------------------------------
 // Flash Simple -- Simple, just detect existence of Flash
@@ -336,10 +339,11 @@ const
     
     // Other mobile devices
     
-    gotBlackBerry = 
-        desys == "BlackBerry",
-    
     gotAndroid = 
+      
+      	// Android and Linux have overlapping navigator.platform values and share
+        // much of the same codebase, so it's necessary to perform the mobile check
+      
         (desys == ("Android" || null)) && gotMobile ||
         (desys.indexOf("Linux") >= 0) && gotMobile,
     
