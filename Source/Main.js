@@ -21,7 +21,7 @@
  *
  *          <script 
  *              type = "text/javascript" 
- *              src = "https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js"
+ *              src  = "https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js"
  *          ></script>
  *
  *  - Install through jQuery: 
