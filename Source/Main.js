@@ -42,7 +42,7 @@
 // Preparation
 // --------------
 
-const desys  = window.navigator.platform; // DEvice + SYStem
+const desys  = window.navigator.platform;         // DEvice + SYStem
 const detect = navigator.userAgent.toLowerCase(); // Necessary for certain exotic browsers (eg. Konqueror, iCab)
 
 function checkIt(string) {
@@ -58,35 +58,35 @@ function checkIt(string) {
 const 
 
    gotIE =
-        !!/*@cc_on!@*/0 ||
-        (!+"\v1") ? true: false ||
-        "ActiveXObject" in window ||
-        !!window.MSInputMethodContext ||
-        !!window.ScriptEngineMajorVersion ||
-        navigator.appName === "Microsoft Internet Explorer" ||
-        document.all ||
+        !!/*@cc_on!@*/0                                      ||
+        (!+"\v1") ? true: false                              ||
+        "ActiveXObject" in window                            ||
+        !!window.MSInputMethodContext                        ||
+        !!window.ScriptEngineMajorVersion                    ||
+        navigator.appName === "Microsoft Internet Explorer"  ||
+        document.all                                         ||
         document.documentMode && !window.MSAssertion,
 
   gotSafari = 
-        /constructor/i.test(window.HTMLElement) ||
-        (function (p) {return p.toString() === "[object SafariRemoteNotification]";})(!window['safari']) ||
-        window.safari !== undefined ||
-        (window.safari && window.safari.pushNotification) ||
-        navigator.vendor ==  "Apple Computer, Inc." ||
-        Object.getOwnPropertyDescriptor(Document.prototype, 'cookie').descriptor === false ||
-        Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') ||
+        /constructor/i.test(window.HTMLElement)                                                           ||
+        (function (p) {return p.toString() === "[object SafariRemoteNotification]";})(!window['safari'])  ||
+        window.safari !== undefined                                                                       ||
+        (window.safari && window.safari.pushNotification)                                                 ||
+        navigator.vendor ==  "Apple Computer, Inc."                                                       ||
+        Object.getOwnPropertyDescriptor(Document.prototype, 'cookie').descriptor === false                ||
+        Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor')                         ||
         /constructor/i.test(function HTMLElementConstructor() {}),
 
   gotOpera = 
-        typeof window.opr !== "undefined" || 
-        window.opera && window.opera.buildNumber ||
-        window.opera && window.opera.version || 
+        typeof window.opr !== "undefined"             || 
+        window.opera && window.opera.buildNumber      ||
+        window.opera && window.opera.version          || 
         Object.prototype.toString.call(window.opera) == "[object Opera]",
 
   gotFirefox = 
-        typeof InstallTrigger !== 'undefined' ||
-        (('netscape' in window) && / rv:/.test(navigator.userAgent)) ||
-        CSS.supports("@document") ||
+        typeof InstallTrigger !== 'undefined'                         ||
+        (('netscape' in window) && / rv:/.test(navigator.userAgent))  ||
+        CSS.supports("@document")                                     ||
         "mozInnerScreenX" in window,
 
   // The old version of Edge
@@ -126,8 +126,8 @@ const
         checkIt("konqueror"),
 
   gotOperaMini = 
-        Object.prototype.toString.call(window.operamini) === "[object OperaMini]" ||
-        desys == 'Pike v7.6 release 92' ||
+        Object.prototype.toString.call(window.operamini) === "[object OperaMini]"  ||
+        desys == 'Pike v7.6 release 92'                                            ||
         desys == "Pike v7.8 release 517",
 
   gotFirefoxMobile = 
@@ -138,15 +138,15 @@ const
         navigator.userAgent.toLowerCase().indexOf('fennec') > -1,
 
   gotNetscapeNavigator = 
-        (!checkIt("compatible") ||
-        navigator.userAgent.indexOf("Mozilla/") >= 0 && !gotFirefox ||
+        (!checkIt("compatible")                                                           ||
+        navigator.userAgent.indexOf("Mozilla/") >= 0 && !gotFirefox                       ||
         (navigator.userAgent.indexOf("Netscape") >=0 || navigator.appName == "Netscape")) && 
-            !gotFirefox &&
-            !gotSafari &&
-            !gotIE &&
-            !gotEdgeTrident &&
-            !gotEdgeChromium &&
-            !gotChrome &&
+            !gotFirefox          &&
+            !gotSafari           &&
+            !gotIE               &&
+            !gotEdgeTrident      &&
+            !gotEdgeChromium     &&
+            !gotChrome           &&
             !gotFirefoxMobile
 
 ;
@@ -156,11 +156,32 @@ const
 // ------------------
         
 const gotMobile =
-        typeof window.orientation !== 'undefined' &&
-        'ontouchstart' in document.documentElement &&
-        window.matchMedia("(min-width: 400px)").matches &&
+        typeof window.orientation !== 'undefined'        &&
+        'ontouchstart' in document.documentElement       &&
+        window.matchMedia("(min-width: 400px)").matches  &&
         'DeviceOrientationEvent' in window;
 
+// -----------------------
+// Mobile (More specific)
+// ------------------------
+
+const 
+   gotBlackBerry =
+      navigator.userAgent.match(new RegExp(/BlackBerry/i)),
+      
+   gotWinMobile  =
+      navigator.userAgent.match(new RegExp(/IEMobile/i))       || 
+      navigator.userAgent.match(new RegExp(/WPDesktop/i))      ||
+      navigator.userAgent.match(new RegExp(/Windows Phone/i)),
+   
+;
+
+const kindleStrings = new RegExp( 
+    /Kindle|Silk|KFTT|KFOT|KFJWA|KFJWI|KFSOWI|KFTHWA|KFTHWI|KFAPWA|KFAPWI|KFASWI|KFTBWI|KFMEWI|KFFOWI|KFSAWA|KFSAWI|KFARWI/i
+);
+
+const gotKindle = kindleStrings.test(navigator.userAgent);
+   
 // ---------------------------------------------------------
 // Flash Simple -- Simple, just detect existence of Flash
 // ---------------------------------------------------------
@@ -393,6 +414,14 @@ const
 // Misc
 // -------
 
-const gotWebTV = 
-    ~navigator.userAgent.toLowerCase().indexOf("webtv") ||
-    desys == "WebTV OS";
+const 
+
+    gotWebTV = 
+      ~navigator.userAgent.toLowerCase().indexOf("webtv") ||
+      desys == "WebTV OS",
+      
+    gotWebOS =
+      navigator.userAgent.indexOf("webOS") >= 0
+
+;      
+
