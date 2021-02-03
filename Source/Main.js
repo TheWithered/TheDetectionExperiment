@@ -22,7 +22,7 @@
  *          <script 
  *              type = "text/javascript" 
  *              src = "https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js"
- *          </script>
+ *          ></script>
  *
  *  - Install through jQuery: 
  *
