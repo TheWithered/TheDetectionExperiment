@@ -2,7 +2,9 @@
 
 An experimental JavaScript snippet for easy browser / feature detection.
 
-We deliberately use user agent checking as less as possible. Many browser extensions let you change your user agent at will, and it's not uncommon for a browser to have a user agent string from another browser (E. g. The UA string 'Netscape' is used by literally a dozen browsers that aren't Netscape, including Firefox and Chrome).
+We deliberately use user agent checking as less as possible, as that is generally agreed upon to be deprecated / bad practice. Instead, we utilize feature detection and JavaScript browser hacks. User agent sniffing is used only in the event that no alternatives are available.
+
+Many Chinese browsers are hard to detect. Particularly 360 Secure Browser by Qihoo is tedious to strap, as the browser has no exclusive properties / known JS hacks and is programmed to change its user agent in set intervals. A Chinese programmer has developed a workaround to this, but it requires jQuery. You can find thee code [here](https://github.com/cloudcome/alien/blob/master/src/core/navigator/shell.js).
 
 # Currently checks for
 
@@ -22,6 +24,10 @@ We deliberately use user agent checking as less as possible. Many browser extens
 * iCab
 * OmniWeb
 * Netscape Navigator / Browser
+* Brave
+* Yandex Browser
+* Tencent QQ Browser
+* UC Browser
 
 ### Browser plugins
 
@@ -70,18 +76,14 @@ We deliberately use user agent checking as less as possible. Many browser extens
 
 * Other Unix-derived operating systems
 
-
 # Support considered for
 
 (Depends on wether I can succesfully gather the info required to write the code for these)
 
 ### Browsers
 
-* Brave
 * Opera GX
 * Surf
-* UC Browser
-* Yandex Browser
 * Yahoo! Japan Browser
 
 ### Browser plugins
