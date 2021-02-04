@@ -2,7 +2,8 @@
  * Detection.js
  * ----------------------------------------------------------------------------------------------------
  * Allows you to easily detect browsers, Flash, OS and devices without any bullshit
- * Rule #1: Only use User Agent sniffing when we have no other option
+ * Rule #1: Only use User Agent sniffing when we have no other option.
+ *  -- User agent sniffing is unreliable and deprecated.
  * Author: Wither
  * -----------------------------------------------------------------------------------------------------
  * Usage: Use variables in conditional code, eg.
@@ -71,8 +72,11 @@ const
         ('-ms-scroll-limit' in document.documentElement.style  && 
         '-ms-ime-align'     in document.documentElement.style) ||
         ('behavior'         in document.documentElement.style  && 
-	 '-ms-user-select'  in document.documentElement.style) ||
+	'-ms-user-select'   in document.documentElement.style) ||
         document.body.style.msTouchAction !== undefined	       ||
+        '-ms-wrap-flow'     in document.documentElement.style  ||
+        !document.currentScript                                ||
+        'expression'        in document.documentElement.style  ||
         document.documentMode && !window.MSAssertion,
 
   gotSafari = 
@@ -103,6 +107,7 @@ const
         (function x() {} )[-6] == 'x'                                 ||
         (function x() {} )[-5] == 'x'                                 ||
         'MozAppearance'   in document.documentElement.style           ||
+        '-moz-binding'    in document.documentElement.style           ||
         "mozInnerScreenX" in window,
 
   // The old version of Edge
@@ -117,7 +122,7 @@ const
   // The new version of Edge
 
   gotEdgeChromium = 
-        navigator.userAgent.indexOf("Edg") != -1 || 
+        navigator.userAgent.indexOf("Edg")  != -1 || 
         navigator.userAgent.indexOf("Edg/") != -1, // Same here
 
   gotChrome = 
@@ -139,8 +144,21 @@ const
         navigator.vendor == "iCab",
 
   gotKonqueror = 
-        navigator.vendor == ("Konqueror" || "KDE") ||
-        checkIt("konqueror"),
+        navigator.vendor == ("Konqueror" || "KDE")         ||
+        checkIt("konqueror")                               ||
+        "KhtmlOpacity" in document.documentElement.style,
+
+  gotYandexBrowser =
+        navigator.userAgent.indexOf("yabrowser") >= 0,
+
+  gotUCBrowser =
+        navigator.userAgent.indexOf(' UCBrowser/') >= 0,
+
+  gotBrave =
+        (navigator.brave && await navigator.brave.isBrave() || false),
+
+  gotQQ =
+        navigator.userAgent.indexOf("QQBrowser") >= 0,
 
   gotOperaMini = 
         Object.prototype.toString.call(window.operamini) === "[object OperaMini]"  ||
@@ -154,7 +172,11 @@ const
         navigator.userAgent.match("FxiOS") || 
         navigator.userAgent.toLowerCase().indexOf('fennec') > -1,
 
+  gotSeaMonkey = 
+        navigator.userAgent.indexOf("Seamonkey"),
+
   gotNetscapeNavigator = 
+        ('layers' || 'ids' || 'tags' || 'classes' || 'contextual')  in document           ||
         (!checkIt("compatible")                                                           ||
         navigator.userAgent.indexOf("Mozilla/") >= 0 && !gotFirefox                       ||
         (navigator.userAgent.indexOf("Netscape") >=0 || navigator.appName == "Netscape")) && 
@@ -173,10 +195,12 @@ const
 // ------------------
         
 const gotMobile =
-        typeof window.orientation !== 'undefined'        &&
-        'ontouchstart' in document.documentElement       &&
-        window.matchMedia("(min-width: 400px)").matches  &&
-        'DeviceOrientationEvent' in window;
+        typeof window.orientation !== 'undefined'              ||
+        'ontouchstart'           in document.documentElement   ||
+        'DeviceOrientationEvent' in window                     ||
+        "maxTouchPoints"         in navigator                  ||
+        window.matchMedia("(min-width: 400px)").matches
+;
 
 // -----------------------
 // Mobile (More specific)
