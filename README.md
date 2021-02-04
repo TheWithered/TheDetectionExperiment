@@ -169,7 +169,7 @@ You can also download the code directly into your project folder, but that comes
 
 # MT-Regex.js
 
-A second JavaScript file that checks for all known mobile hardware at the time of its writing, as an alternative for the mobile detection in Main.js. Its usage is __highly disrecommended__. If you absolutely *must*, you may install it as so:
+A second JavaScript file that checks for all known mobile hardware at the time of its writing using a __giant__ regex (Regular expression), as an alternative for the mobile detection in Main.js. Its usage is __highly disrecommended__. If you absolutely *must*, you may install it as so:
 
 ```html
 
