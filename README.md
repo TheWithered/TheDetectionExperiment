@@ -4,7 +4,7 @@ An experimental JavaScript snippet for easy browser / feature detection.
 
 We deliberately use user agent checking as less as possible, as that is generally agreed upon to be deprecated / bad practice. Instead, we utilize feature detection and JavaScript browser hacks. User agent sniffing is used only in the event that no alternatives are available.
 
-Many Chinese browsers are hard to detect. Particularly 360 Secure Browser by Qihoo is tedious to strap, as the browser has no exclusive properties / known JS hacks and is programmed to change its user agent in set intervals. A Chinese programmer has developed a workaround to this, but it requires jQuery. You can find thee code [here](https://github.com/cloudcome/alien/blob/master/src/core/navigator/shell.js).
+Many Chinese browsers are hard to detect. Particularly 360 Secure Browser by Qihoo is tedious to strap, as the browser has no exclusive properties / known JS hacks and is programmed to change its user agent in set intervals. A Chinese programmer has developed a workaround to this, but it requires jQuery. You can find the code [here](https://github.com/cloudcome/alien/blob/master/src/core/navigator/shell.js).
 
 # Usage guide
 
