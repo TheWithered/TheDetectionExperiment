@@ -173,7 +173,7 @@ const
    gotWinMobile  =
       navigator.userAgent.match(new RegExp(/IEMobile/i))       || 
       navigator.userAgent.match(new RegExp(/WPDesktop/i))      ||
-      navigator.userAgent.match(new RegExp(/Windows Phone/i)),
+      navigator.userAgent.match(new RegExp(/Windows Phone/i))
    
 ;
 
