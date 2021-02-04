@@ -58,13 +58,21 @@ function checkIt(string) {
 const 
 
    gotIE =
-        !!/*@cc_on!@*/0                                      ||
-        (!+"\v1") ? true: false                              ||
-        "ActiveXObject" in window                            ||
-        !!window.MSInputMethodContext                        ||
-        !!window.ScriptEngineMajorVersion                    ||
-        navigator.appName === "Microsoft Internet Explorer"  ||
-        document.all                                         ||
+        !!/*@cc_on!@*/0                                        ||
+        eval("/*@cc_on!@*/false")                              ||
+        (!+"\v1") ? true: false                                ||
+        "ActiveXObject" in window                              ||
+        !!window.MSInputMethodContext                          ||
+        !!window.ScriptEngineMajorVersion                      ||
+        navigator.appName === "Microsoft Internet Explorer"    ||
+        document.all                                           ||
+        '\v' == 'v'                                            ||
+        window.navigator.msPointerEnabled                      ||
+        ('-ms-scroll-limit' in document.documentElement.style  && 
+        '-ms-ime-align'     in document.documentElement.style) ||
+        ('behavior'         in document.documentElement.style  && 
+	 '-ms-user-select'  in document.documentElement.style) ||
+        document.body.style.msTouchAction !== undefined	       ||
         document.documentMode && !window.MSAssertion,
 
   gotSafari = 
@@ -75,18 +83,26 @@ const
         navigator.vendor ==  "Apple Computer, Inc."                                                       ||
         Object.getOwnPropertyDescriptor(Document.prototype, 'cookie').descriptor === false                ||
         Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor')                         ||
+        /a/.__proto__ == '//'                								  ||
         /constructor/i.test(function HTMLElementConstructor() {}),
 
   gotOpera = 
         typeof window.opr !== "undefined"             || 
         window.opera && window.opera.buildNumber      ||
-        window.opera && window.opera.version          || 
+        window.opera && window.opera.version          ||
+        new RegExp(/^function \(/).test([].sort)      ||
         Object.prototype.toString.call(window.opera) == "[object Opera]",
 
   gotFirefox = 
         typeof InstallTrigger !== 'undefined'                         ||
         (('netscape' in window) && / rv:/.test(navigator.userAgent))  ||
         CSS.supports("@document")                                     ||
+        !!window.sidebar                                              ||
+        !!window.globalStorage                                        ||
+        !!/a/[-1] == 'a'                                              ||
+        (function x() {} )[-6] == 'x'                                 ||
+        (function x() {} )[-5] == 'x'                                 ||
+        'MozAppearance'   in document.documentElement.style           ||
         "mozInnerScreenX" in window,
 
   // The old version of Edge
@@ -105,7 +121,8 @@ const
         navigator.userAgent.indexOf("Edg/") != -1, // Same here
 
   gotChrome = 
-        !!window.chrome !== undefined,
+        !!window.chrome !== undefined               ||
+        RegExp(/source/).test((/a/.toString + '')),
 
   gotBlink =
         (gotChrome || gotOpera || (window.Intl && Intl.v8BreakIterator)) && 
