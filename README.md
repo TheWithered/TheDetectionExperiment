@@ -113,6 +113,7 @@ You can also download the code directly into your project folder, but that comes
 * Linux
 * Android
 * HP-UX
+* WebOS
 
 ### Consoles
 
