@@ -6,6 +6,72 @@ We deliberately use user agent checking as less as possible, as that is generall
 
 Many Chinese browsers are hard to detect. Particularly 360 Secure Browser by Qihoo is tedious to strap, as the browser has no exclusive properties / known JS hacks and is programmed to change its user agent in set intervals. A Chinese programmer has developed a workaround to this, but it requires jQuery. You can find thee code [here](https://github.com/cloudcome/alien/blob/master/src/core/navigator/shell.js).
 
+# Usage guide
+
+The way that the library works is that it contains a variety of different conditionals within constant variables. You can then use these in if-else statements, switches, and potentially loops if need be.
+
+Let's take Opera as an example. This is the variable for Opera:
+
+```javascript
+gotOpera = 
+        typeof window.opr !== "undefined"             || 
+        window.opera && window.opera.buildNumber      ||
+        window.opera && window.opera.version          ||
+        new RegExp(/^function \(/).test([].sort)      ||
+        Object.prototype.toString.call(window.opera) == "[object Opera]",
+```
+
+You can then use the variable `gotOpera` in your code like so:
+
+```javascript
+if (gotOpera) {
+  alert("We are in Opera!");
+}
+```
+
+The above code is equivalent to the following:
+
+```javascript
+if (typeof window.opr !== "undefined"  || 
+    window.opera && window.opera.buildNumber ||  
+    window.opera && window.opera.version ||
+    new RegExp(/^function \(/).test([].sort) || 
+    Object.prototype.toString.call(window.opera) == "[object Opera]"
+   ) {
+      alert("We are in Opera!");    
+}
+```
+
+Long story short, the library compiles a myriad of different detection methods and contains them in short variables that you can then invoke wherever you want.
+
+# Installation methods
+
+Add the following to your HTML:
+
+```html
+
+<script 
+   type = "text/javascript" 
+   src  = "https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js"
+></script>
+
+```
+
+Using jQuery:
+
+```javascript
+// Standard
+
+$.getScript('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js');
+
+// Also correct, use this if you can't call jQuery from the dollar sign (E. g. You're using Prototype.js)
+
+jQuery.getScript('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/Main.js');
+
+```
+
+You can also download the code directly into your project folder, but that comes with the risk of missing out on updates. If you really want to use the code locally, you should regularly check back for updates.
+
 # Currently checks for
 
 ### Browsers
@@ -99,3 +165,25 @@ Many Chinese browsers are hard to detect. Particularly 360 Secure Browser by Qih
 ### Consoles
 
 * Xbox family
+
+# MT-Regex.js
+
+A second JavaScript file that checks for all known mobile hardware at the time of its writing, as an alternative for the mobile detection in Main.js. Its usage is __highly disrecommended__. If you absolutely *must*, you may install it as so:
+
+```html
+
+<script 
+   type = "text/javascript" 
+   src  = "https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/MT-Regex.js"
+></script>
+
+```
+
+Or:
+
+```javascript
+$.getScript('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/MT-Regex.js');
+jQuery.getScript('https://raw.githubusercontent.com/TheWithered/TheDetectionExperiment/main/Source/MT-Regex.js');
+```
+
+You may then call the function from the window.
