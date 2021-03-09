@@ -60,7 +60,6 @@ const
 
    gotIE =
         !!/*@cc_on!@*/0                                        ||
-        eval("/*@cc_on!@*/false")                              ||
         (!+"\v1") ? true: false                                ||
         "ActiveXObject" in window                              ||
         !!window.MSInputMethodContext                          ||
