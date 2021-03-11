@@ -195,10 +195,7 @@ const
         
 const gotMobile =
         typeof window.orientation !== 'undefined'              ||
-        'ontouchstart'           in document.documentElement   ||
-        'DeviceOrientationEvent' in window                     ||
-        "maxTouchPoints"         in navigator                  ||
-        window.matchMedia("(min-width: 400px)").matches
+        'ontouchstart'           in document.documentElement 
 ;
 
 // -----------------------
