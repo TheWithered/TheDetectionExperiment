@@ -76,6 +76,7 @@ const
         '-ms-wrap-flow'     in document.documentElement.style  ||
         !document.currentScript                                ||
         'expression'        in document.documentElement.style  ||
+      	window.msCrypto                                        ||
         document.documentMode && !window.MSAssertion,
 
   gotSafari = 
